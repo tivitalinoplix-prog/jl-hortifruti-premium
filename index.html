@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JL Hortifruti | O Frescor da Feira em Casa</title>
+    <title>JL Hortifruti - O Frescor da Feira em Casa</title>
     <meta name="description" content="JL Hortifruti - Entrega grátis de frutas e verduras frescas em Macaé. Boxes semanais premium.">
-    
+    <meta property="og:title" content="JL Hortifruti | O Frescor da Feira em Casa">
+    <meta property="og:image" content="https://i.postimg.cc/76cfLtSc/logo.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Sua feira completa, sem sair de casa. Praticidade e frescor com a JL Hortifruti.">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -24,161 +26,521 @@
                             light: '#E8F5F0'
                         }
                     },
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
                 }
             }
         };
     </script>
+
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            overflow-x: hidden; 
+            background-color: #ffffff;
+            width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .navbar {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .navbar.transparent {
+            background: rgba(0, 107, 84, 0.1);
+            backdrop-filter: blur(8px);
+        }
+        
+        .navbar.solid {
+            background: #006B54;
+            box-shadow: 0 2px 12px rgba(0, 107, 84, 0.15);
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #FF8C42; border-radius: 10px; }
+
+        @media (max-width: 768px) {
+            .hero-video-bg {
+                object-position: center;
+            }
+            
+            .woman-section-bg {
+                background-position: 35% top !important;
+                background-size: auto 120% !important;
+                background-attachment: scroll !important;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body class="text-slate-800 antialiased">
 
-    <!-- NAVBAR -->
-    <nav class="navbar fixed top-0 left-0 right-0 z-50 transition-all duration-500 transparent">
+    <!-- ==================== NAVBAR ==================== -->
+    <nav id="navbar" class="navbar fixed top-0 left-0 right-0 z-50 transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400">
-                        <img src="https://i.postimg.cc/76cfLtSc/logo.jpg" alt="JL Logo" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-white font-black text-lg md:text-xl leading-none uppercase">JL</span>
-                        <span class="text-white font-bold text-[10px] md:text-xs uppercase tracking-tight">Hortifruti</span>
-                    </div>
+                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center font-bold text-brand-green text-lg">JL</div>
+                    <span class="text-white font-bold text-xl hidden sm:block">HORTIFRUTI</span>
                 </div>
 
-                <div class="hidden md:flex items-center gap-8 text-white font-medium">
-                    <a href="#boxes" class="hover:text-yellow-400 transition-colors">Nossos Boxes</a>
-                    <a href="#tercabox" class="hover:text-yellow-400 transition-colors">Terça Box</a>
-                    <a href="#faq" class="hover:text-yellow-400 transition-colors">FAQ</a>
-                    <a href="#" id="search-modal-btn" class="flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full hover:bg-white/20 transition-all">
-                        <span class="iconify" data-icon="solar:magic-stick-3-bold"></span>
-                        Visualizar Itens
-                    </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#boxes" class="text-white hover:text-yellow-400 font-medium transition-colors">Nossos Boxes</a>
+                    <a href="#tercabox" class="text-white hover:text-yellow-400 font-medium transition-colors">Terça Box</a>
+                    <a href="#qualidade" class="text-white hover:text-yellow-400 font-medium transition-colors">Qualidade</a>
+                    <a href="#faq" class="text-white hover:text-yellow-400 font-medium transition-colors">FAQ</a>
                 </div>
 
-                <a href="https://wa.me/5522998468431" class="hidden md:flex items-center gap-2 bg-yellow-400 text-brand-green px-6 py-3 rounded-full font-bold hover:bg-yellow-300">
-                    <span class="iconify" data-icon="solar:cart-large-bold"></span>
+                <a href="https://wa.me/5522998468431?text=Ola!%20Quero%20saber%20mais%20sobre%20a%20TercaBox" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 bg-yellow-400 text-brand-green px-6 py-3 rounded-full font-bold hover:bg-yellow-300 transition-all hover:scale-105">
+                    <span>🛒</span>
                     Pedir
                 </a>
 
-                <button class="mobile-menu-toggle md:hidden text-white p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-20 right-0 bottom-0 w-64 bg-brand-green shadow-2xl md:hidden">
+            <div class="flex flex-col p-6 gap-4">
+                <a href="#boxes" class="text-white hover:text-yellow-400 font-medium py-2 border-b border-white/10">Nossos Boxes</a>
+                <a href="#tercabox" class="text-white hover:text-yellow-400 font-medium py-2 border-b border-white/10">Terça Box</a>
+                <a href="#qualidade" class="text-white hover:text-yellow-400 font-medium py-2 border-b border-white/10">Qualidade</a>
+                <a href="#faq" class="text-white hover:text-yellow-400 font-medium py-2 border-b border-white/10">FAQ</a>
+                <a href="https://wa.me/5522998468431" target="_blank" class="flex items-center justify-center gap-2 bg-yellow-400 text-brand-green px-6 py-3 rounded-full font-bold mt-4">
+                    <span>🛒</span> Pedir Agora
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- MOBILE MENU -->
-    <div class="mobile-menu hidden fixed inset-0 z-[60] bg-brand-dark p-8 text-white space-y-6">
-        <div class="flex justify-end"><button class="mobile-menu-toggle text-4xl">&times;</button></div>
-        <a href="#boxes" class="block text-2xl font-bold">Nossos Boxes</a>
-        <a href="#tercabox" class="block text-2xl font-bold">Terça Box</a>
-        <a href="#faq" class="block text-2xl font-bold">FAQ</a>
-        <a href="https://wa.me/5522998468431" class="block bg-yellow-400 text-brand-green p-4 rounded-2xl text-center font-bold">Pedir Agora</a>
-    </div>
-
-    <!-- HERO SECTION -->
-    <section id="hero" class="relative h-screen min-h-[600px] overflow-hidden bg-brand-dark flex items-center justify-center">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+    <!-- ==================== HERO ==================== -->
+    <section class="relative h-screen min-h-[600px] overflow-hidden">
+        <video class="hero-video-bg" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1920&amp;q=80">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-vegetables-falling-into-water-44796-large.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-brand-dark/60 z-10"></div>
-        <div class="relative z-20 text-center max-w-4xl px-4 animate-fade-in-up">
-            <h1 class="text-7xl md:text-9xl font-black text-white leading-none tracking-tighter uppercase mb-6">
-                TERÇA<br><span class="text-yellow-400">BOX</span>
-            </h1>
-            <p class="text-2xl text-white font-medium mb-12">O frescor da feira direto na sua porta.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#boxes" class="bg-yellow-400 text-brand-green px-10 py-5 rounded-3xl font-black text-xl hover:scale-105 transition-transform">VER OFERTAS</a>
-                <a href="https://wa.me/5522998468431" class="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-3xl font-black text-xl hover:bg-white/20 transition-all">WHATSAPP</a>
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-green/80 via-brand-green/60 to-transparent z-10"></div>
+        <div class="relative z-20 h-full flex items-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full text-white mb-6 animate-fade-in-up">
+                        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-sm font-semibold">Entrega Grátis em Macaé</span>
+                    </div>
+
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
+                        TERÇA<br><span class="text-yellow-400">BOX</span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-white mb-4 font-medium animate-fade-in-up">
+                        Sua feira completa, <span class="text-green-300">sem sair de casa.</span>
+                    </p>
+
+                    <p class="text-lg text-white/90 mb-8 max-w-xl animate-fade-in-up">
+                        Frutas e verduras selecionadas e entregues na sua porta. Praticidade e frescor com a JL Hortifruti.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up">
+                        <a href="https://wa.me/5522998468431?text=Quero%20montar%20minha%20Terca%20Box!" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-yellow-400 text-brand-green px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition-all hover:scale-105 shadow-lg">
+                            Monte sua Terça Box
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        </a>
+                        <a href="#boxes" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all border-2 border-white/30">
+                            Ver Ofertas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+        </div>
+    </section>
+
+    <!-- ==================== BENEFÍCIOS ==================== -->
+    <section class="py-20 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-sm font-bold text-brand-green-light uppercase tracking-wider mb-3">Nossos Diferenciais</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-green">Por que escolher a JL Hortifruti?</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-green-light transition-all hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">🌿</div>
+                    <h3 class="text-xl font-bold text-brand-green mb-3">Sempre Fresco</h3>
+                    <p class="text-gray-600 leading-relaxed">Colhemos e entregamos em até 24h. Garantia de frescor ou seu dinheiro de volta.</p>
+                </div>
+                <div class="group bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-green-light transition-all hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">🚚</div>
+                    <h3 class="text-xl font-bold text-brand-green mb-3">Entrega Rápida</h3>
+                    <p class="text-gray-600 leading-relaxed">Receba em casa no mesmo dia. Entregas de terça a sábado, sem custo adicional em Macaé.</p>
+                </div>
+                <div class="group bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-green-light transition-all hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">💰</div>
+                    <h3 class="text-xl font-bold text-brand-green mb-3">Preço Justo</h3>
+                    <p class="text-gray-600 leading-relaxed">Sem intermediários. Compramos direto dos produtores locais e repassamos a economia pra você.</p>
+                </div>
+                <div class="group bg-white rounded-2xl p-8 border border-gray-100 hover:border-brand-green-light transition-all hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+                    <div class="w-20 h-20 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition-transform">✓</div>
+                    <h3 class="text-xl font-bold text-brand-green mb-3">Selecionado</h3>
+                    <p class="text-gray-600 leading-relaxed">Cada item é inspecionado manualmente pela nossa equipe antes de entrar no box.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- BOXES SECTION (HIDDEN FOR COMPACTNESS IN PUSH) -->
-    <section id="boxes" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-5xl font-black text-brand-green mb-16">Nossos Boxes Premium</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12" id="boxes-container">
-                <!-- Box Solteiro -->
-                <div class="bg-white rounded-[3rem] p-8 shadow-xl border border-slate-100 hover:-translate-y-4 transition-all group">
-                    <img src="https://i.postimg.cc/4dBY8wM5/boxsolteiro.png" class="w-full h-64 object-cover rounded-[2rem] mb-8" alt="Box Solteiro">
-                    <h3 class="text-3xl font-black text-brand-green mb-4">Box Solteiro</h3>
-                    <p class="text-slate-500 mb-8 font-medium">O essencial para 1 pessoa.</p>
-                    <div class="text-4xl font-black text-brand-green mb-8">R$ 59<span class="text-sm">/semana</span></div>
-                    <a href="https://wa.me/5522998468431" class="block w-full bg-brand-green text-white py-4 rounded-2xl font-bold hover:bg-brand-dark">ASSINAR</a>
+    <!-- ==================== BOXES ==================== -->
+    <section id="boxes" class="py-20 bg-gradient-to-b from-white to-brand-light reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-sm font-bold text-brand-green-light uppercase tracking-wider mb-3">Monte seu plano</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-green mb-4">Escolha o tamanho da sua fome</h2>
+                <p class="text-xl text-gray-600">Boxes balanceados para garantir a saúde da sua família</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Box Individual -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=600&amp;q=80" alt="Box Individual" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-brand-green mb-3">Box Individual</h3>
+                        <p class="text-gray-600 mb-6 min-h-[60px]">Ideal para 1 pessoa. O básico essencial para uma semana saudável com praticidade.</p>
+                        <div class="mb-6">
+                            <p class="text-sm text-gray-500 uppercase tracking-wide mb-1">A partir de</p>
+                            <p class="text-4xl font-bold text-brand-green">R$ 59</p>
+                        </div>
+                        <a href="https://wa.me/5522998468431?text=Quero%20assinar%20o%20Box%20Individual!" target="_blank" class="block w-full text-center py-3 rounded-xl font-bold transition-all bg-brand-green text-white hover:bg-brand-green-light">Assinar</a>
+                    </div>
                 </div>
                 <!-- Box Casal -->
-                <div class="bg-white rounded-[3rem] p-8 shadow-2xl border-4 border-brand-orange hover:-translate-y-4 transition-all relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white px-6 py-1 rounded-full text-xs font-black">MAIS PEDIDO</div>
-                    <img src="https://i.postimg.cc/nrrCNBb2/boxcasal.png" class="w-full h-64 object-cover rounded-[2rem] mb-8" alt="Box Casal">
-                    <h3 class="text-3xl font-black text-brand-green mb-4">Box Casal</h3>
-                    <p class="text-slate-500 mb-8 font-medium">A medida certa para dois.</p>
-                    <div class="text-4xl font-black text-brand-green mb-8">R$ 89<span class="text-sm">/semana</span></div>
-                    <a href="https://wa.me/5522998468431" class="block w-full bg-brand-orange text-white py-4 rounded-2xl font-bold hover:bg-[#FF7A26]">ASSINAR</a>
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                    <div class="bg-orange-500 text-white text-xs font-bold px-4 py-2 text-center">MAIS PEDIDO</div>
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=600&amp;q=80" alt="Box Casal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-brand-green mb-3">Box Casal</h3>
+                        <p class="text-gray-600 mb-6 min-h-[60px]">A medida certa para dois. Variedade e frescor para refeições completas.</p>
+                        <div class="mb-6">
+                            <p class="text-sm text-gray-500 uppercase tracking-wide mb-1">A partir de</p>
+                            <p class="text-4xl font-bold text-brand-green">R$ 89</p>
+                        </div>
+                        <a href="https://wa.me/5522998468431?text=Quero%20assinar%20o%20Box%20Casal!" target="_blank" class="block w-full text-center py-3 rounded-xl font-bold transition-all bg-orange-500 text-white hover:bg-orange-600">Assinar</a>
+                    </div>
                 </div>
                 <!-- Box Família -->
-                <div class="bg-white rounded-[3rem] p-8 shadow-xl border border-slate-100 hover:-translate-y-4 transition-all">
-                    <img src="https://i.postimg.cc/tJJY8WQ2/boxfamilia.png" class="w-full h-64 object-cover rounded-[2rem] mb-8" alt="Box Família">
-                    <h3 class="text-3xl font-black text-brand-green mb-4">Box Família</h3>
-                    <p class="text-slate-500 mb-8 font-medium">Abundância para todos.</p>
-                    <div class="text-4xl font-black text-brand-green mb-8">R$ 139<span class="text-sm">/semana</span></div>
-                    <a href="https://wa.me/5522998468431" class="block w-full bg-brand-green text-white py-4 rounded-2xl font-bold hover:bg-brand-dark">ASSINAR</a>
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&amp;q=80" alt="Box Família" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-brand-green mb-3">Box Família</h3>
+                        <p class="text-gray-600 mb-6 min-h-[60px]">Abundância para toda a família. Saúde e sabor em grande escala na sua mesa.</p>
+                        <div class="mb-6">
+                            <p class="text-sm text-gray-500 uppercase tracking-wide mb-1">A partir de</p>
+                            <p class="text-4xl font-bold text-brand-green">R$ 139</p>
+                        </div>
+                        <a href="https://wa.me/5522998468431?text=Quero%20assinar%20o%20Box%20Fam%C3%ADlia!" target="_blank" class="block w-full text-center py-3 rounded-xl font-bold transition-all bg-brand-green text-white hover:bg-brand-green-light">Assinar</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-4xl font-black text-brand-green text-center mb-12">Perguntas Frequentes</h2>
-            <div id="faq-container" class="space-y-4"></div>
+    <!-- ==================== WOMAN SECTION (TERÇA BOX) ==================== -->
+    <section id="tercabox" class="woman-section-bg relative min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat reveal" style="background-image: url(https://i.postimg.cc/VvFhtP0t/Mulher.png); background-attachment: fixed;">
+        <div class="absolute top-8 left-4 md:left-12 z-10">
+            <div class="flex items-center gap-2 bg-brand-green/95 backdrop-blur-md text-white px-6 py-3 rounded-full shadow-lg">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                <span class="font-semibold">Entrega Grátis em Macaé</span>
+            </div>
+        </div>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex justify-end">
+                <div class="bg-white rounded-3xl p-8 md:p-12 max-w-xl shadow-2xl">
+                    <h2 class="text-3xl md:text-5xl font-bold text-brand-green mb-6 leading-tight">Mais sabor na sua cozinha, todos os dias</h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">Ingredientes frescos, selecionados com carinho e entregues na sua porta. Praticidade para quem não abre mão da saúde.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/5522998468431?text=Quero%20minha%20box!" target="_blank" class="flex items-center justify-center gap-2 bg-brand-green text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-green-light transition-all shadow-lg">
+                            Quero Minha Box
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        </a>
+                        <div class="flex items-center gap-3 px-6 py-3 bg-white border-2 border-brand-green-light rounded-xl">
+                            <div class="w-10 h-10 bg-brand-green-light rounded-full flex items-center justify-center text-white text-xl">⭐</div>
+                            <div>
+                                <p class="text-xs font-bold text-brand-green uppercase">Premium</p>
+                                <p class="text-sm text-gray-600">Qualidade 5 Estrelas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ASSISTANT MODAL -->
-    <div id="assistant-modal" class="assistant-modal items-center justify-center md:items-end md:justify-end md:p-6 bg-black/60 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none">
-        <div class="w-full h-full md:w-[450px] md:h-[650px] bg-white md:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
-            <div class="bg-brand-green p-6 text-white flex justify-between items-center">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-3xl">👨‍🍳</div>
-                    <h3 class="font-black">Chef Fresco</h3>
+    <!-- ==================== QUALIDADE ==================== -->
+    <section id="qualidade" class="py-20 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=600&amp;q=80" alt="Produtos frescos" class="rounded-2xl object-cover h-64 w-full">
+                    <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=600&amp;q=80" alt="Vegetais" class="rounded-2xl object-cover h-64 w-full mt-8">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&amp;q=80" alt="Frutas" class="rounded-2xl object-cover h-64 w-full -mt-8">
+                    <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&amp;q=80" alt="Hortifruti" class="rounded-2xl object-cover h-64 w-full">
                 </div>
-                <button id="assistant-close" class="text-2xl font-bold">&times;</button>
-            </div>
-            <div id="chat-messages" class="flex-grow p-6 overflow-y-auto space-y-4 bg-slate-50"></div>
-            <form id="chat-form" class="p-4 border-t bg-white flex gap-2">
-                <input type="text" id="chat-input" placeholder="Dúvidas?" class="flex-grow bg-slate-100 rounded-xl px-4 py-3 outline-none">
-                <button type="submit" class="bg-brand-green text-white p-3 rounded-xl">OK</button>
-            </form>
-        </div>
-    </div>
-    <div id="assistant-fab" class="assistant-fab">👨‍🍳</div>
-
-    <!-- SEARCH MODAL (IA Visualizer) -->
-    <div id="search-modal" class="hidden fixed inset-0 z-[300] items-center justify-center p-4 bg-brand-dark/80 backdrop-blur-md">
-        <div class="w-full max-w-2xl bg-white rounded-[3rem] shadow-2xl overflow-hidden p-8">
-            <div class="flex justify-between items-center mb-8 border-b pb-6">
                 <div>
-                    <h3 class="text-2xl font-black text-brand-dark">Visualizador de Itens</h3>
-                    <p class="text-slate-400 text-sm font-bold">Crie ícones no estilo Claymorphism</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-brand-green mb-6">
+                        Nosso compromisso é com o <span class="text-brand-green-light">frescor real.</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Diferente de grandes supermercados, a JL Hortifruti seleciona cada item individualmente nas primeiras horas da manhã. Trabalhamos diretamente com produtores locais para garantir que o tempo entre a colheita e sua mesa seja o menor possível.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-green-light/10 rounded-xl flex items-center justify-center">
+                                <span class="text-2xl font-bold text-brand-green-light">01</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-brand-green mb-2">Seleção Manual</h3>
+                                <p class="text-gray-600">Cada fruto é verificado por nossos especialistas antes de entrar no box.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-green-light/10 rounded-xl flex items-center justify-center">
+                                <span class="text-2xl font-bold text-brand-green-light">02</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-brand-green mb-2">Higiene Rigorosa</h3>
+                                <p class="text-gray-600">Processos de higienização que mantêm as propriedades naturais dos alimentos.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-brand-green-light/10 rounded-xl flex items-center justify-center">
+                                <span class="text-2xl font-bold text-brand-green-light">03</span>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-brand-green mb-2">Origem Local</h3>
+                                <p class="text-gray-600">Apoio ao pequeno produtor da nossa região serrana.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button id="search-modal-close" class="text-4xl text-slate-300">&times;</button>
-            </div>
-            <form id="search-form" class="relative mb-8">
-                <input type="text" id="search-input" placeholder="O que deseja ver? (Ex: Melancia)" class="w-full bg-slate-100 p-5 rounded-2xl font-bold outline-none border-2 border-transparent focus:border-brand-green transition-all">
-                <button type="submit" class="absolute right-2 top-2 bottom-2 bg-brand-green text-white px-6 rounded-xl font-bold">VER</button>
-            </form>
-            <div id="search-preview" class="min-h-[300px] border-4 border-dashed border-slate-100 rounded-[2rem] flex flex-col items-center justify-center bg-slate-50">
-                <p class="text-slate-300 font-bold">Digite algo acima para ver a mágica.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- SCRIPTS -->
-    <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/assistant.js"></script>
-    <script type="module" src="js/search-modal.js"></script>
+    <!-- ==================== FAQ ==================== -->
+    <section id="faq" class="py-20 bg-gradient-to-b from-brand-light to-white reveal">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-sm font-bold text-brand-green-light uppercase tracking-wider mb-3">Perguntas Frequentes</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-green mb-4">Tire suas dúvidas</h2>
+                <p class="text-xl text-gray-600">Tudo que você precisa saber sobre a TerçaBox</p>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <!-- FAQ items rendered by JS -->
+            </div>
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-6">Ainda tem dúvidas? Fale com a gente!</p>
+                <a href="https://wa.me/5522998468431?text=Tenho%20uma%20duvida%20sobre%20a%20TercaBox" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold hover:bg-green-600 transition-all shadow-lg">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chamar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-brand-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center font-bold text-brand-green text-lg">JL</div>
+                        <span class="text-white font-bold text-xl">HORTIFRUTI</span>
+                    </div>
+                    <p class="text-gray-300 max-w-md">O frescor da feira em casa. Entregamos saúde, praticidade e sabor para sua família em Macaé.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Links Úteis</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#boxes" class="text-gray-300 hover:text-yellow-400 transition-colors">Nossos Boxes</a></li>
+                        <li><a href="#tercabox" class="text-gray-300 hover:text-yellow-400 transition-colors">Terça Box</a></li>
+                        <li><a href="#qualidade" class="text-gray-300 hover:text-yellow-400 transition-colors">Qualidade</a></li>
+                        <li><a href="#faq" class="text-gray-300 hover:text-yellow-400 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Contato</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-gray-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            (22) 99846-8431
+                        </li>
+                        <li class="text-gray-300">📍 Macaé, RJ</li>
+                    </ul>
+                    <a href="https://wa.me/5522998468431" target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full font-bold mt-4 hover:bg-green-600 transition-all">Fale Conosco</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 JL Hortifruti. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.remove('transparent');
+                nav.classList.add('solid');
+            } else {
+                nav.classList.remove('solid');
+                nav.classList.add('transparent');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        // FAQ
+        const faqs = [
+            { question: 'Por que escolher a TerçaBox?', answer: 'A TerçaBox oferece praticidade, frescor garantido e economia. Você recebe produtos selecionados sem sair de casa, com entrega grátis em Macaé e preços justos direto do produtor.' },
+            { question: 'Como funciona a entrega?', answer: 'Fazemos entregas de terça a sábado em Macaé. Você escolhe seu box, faz o pedido via WhatsApp e recebe em casa no mesmo dia ou no dia seguinte, totalmente grátis.' },
+            { question: 'Posso escolher os produtos que vêm no box?', answer: 'Nossos boxes são pré-selecionados com variedade balanceada. Mas você pode fazer pedidos personalizados através do WhatsApp, adicionando ou removendo produtos conforme sua preferência.' },
+            { question: 'Qual a garantia de frescor?', answer: 'Garantimos produtos frescos colhidos em até 24h antes da entrega. Se você não ficar satisfeito com a qualidade, devolvemos seu dinheiro sem burocracia.' },
+            { question: 'Como fazer meu pedido?', answer: 'É super simples! Clique em qualquer botão "Pedir" ou "Assinar" do site e você será direcionado para nosso WhatsApp. Lá você escolhe seu box e finaliza o pedido com nossa equipe.' },
+            { question: 'Quais são as formas de pagamento?', answer: 'Aceitamos Pix, cartão de crédito e débito, e dinheiro na entrega. Entre em contato via WhatsApp para confirmar a forma de pagamento mais conveniente para você.' },
+            { question: 'Vocês atendem fora de Macaé?', answer: 'Atualmente atendemos apenas Macaé com entrega grátis. Para outras regiões, entre em contato via WhatsApp para verificarmos a possibilidade de atendimento.' },
+            { question: 'Posso cancelar minha assinatura?', answer: 'Sim! Não há fidelidade. Você pode fazer pedidos avulsos ou pausar/cancelar sua assinatura a qualquer momento, sem taxas ou burocracias.' }
+        ];
+
+        const faqList = document.getElementById('faq-list');
+        faqs.forEach((faq, index) => {
+            const div = document.createElement('div');
+            div.className = 'bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow';
+            div.innerHTML = `
+                <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors">
+                    <span class="font-bold text-lg text-brand-green pr-4">${faq.question}</span>
+                    <svg class="faq-icon w-6 h-6 text-brand-green-light flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="faq-answer px-6 pb-5">
+                    <p class="text-gray-600 leading-relaxed">${faq.answer}</p>
+                </div>
+            `;
+            faqList.appendChild(div);
+        });
+
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('.faq-icon');
+                const isOpen = answer.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
