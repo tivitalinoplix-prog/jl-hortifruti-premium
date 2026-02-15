@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JL Hortifruti | O Frescor da Feira em Casa</title>
+    <meta name="description" content="JL Hortifruti - Entrega grátis de frutas e verduras frescas em Macaé. Boxes semanais premium.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            green: '#006B54',
+                            'green-light': '#00A86B',
+                            orange: '#FF8C42',
+                            dark: '#003D2F',
+                            light: '#E8F5F0'
+                        }
+                    },
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- NAVBAR -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 transition-all duration-500 transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400">
+                        <img src="https://i.postimg.cc/76cfLtSc/logo.jpg" alt="JL Logo" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-black text-lg md:text-xl leading-none uppercase">JL</span>
+                        <span class="text-white font-bold text-[10px] md:text-xs uppercase tracking-tight">Hortifruti</span>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center gap-8 text-white font-medium">
+                    <a href="#boxes" class="hover:text-yellow-400 transition-colors">Nossos Boxes</a>
+                    <a href="#tercabox" class="hover:text-yellow-400 transition-colors">Terça Box</a>
+                    <a href="#faq" class="hover:text-yellow-400 transition-colors">FAQ</a>
+                    <a href="#" id="search-modal-btn" class="flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full hover:bg-white/20 transition-all">
+                        <span class="iconify" data-icon="solar:magic-stick-3-bold"></span>
+                        Visualizar Itens
+                    </a>
+                </div>
+
+                <a href="https://wa.me/5522998468431" class="hidden md:flex items-center gap-2 bg-yellow-400 text-brand-green px-6 py-3 rounded-full font-bold hover:bg-yellow-300">
+                    <span class="iconify" data-icon="solar:cart-large-bold"></span>
+                    Pedir
+                </a>
+
+                <button class="mobile-menu-toggle md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu hidden fixed inset-0 z-[60] bg-brand-dark p-8 text-white space-y-6">
+        <div class="flex justify-end"><button class="mobile-menu-toggle text-4xl">&times;</button></div>
+        <a href="#boxes" class="block text-2xl font-bold">Nossos Boxes</a>
+        <a href="#tercabox" class="block text-2xl font-bold">Terça Box</a>
+        <a href="#faq" class="block text-2xl font-bold">FAQ</a>
+        <a href="https://wa.me/5522998468431" class="block bg-yellow-400 text-brand-green p-4 rounded-2xl text-center font-bold">Pedir Agora</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative h-screen min-h-[600px] overflow-hidden bg-brand-dark flex items-center justify-center">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-vegetables-falling-into-water-44796-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-brand-dark/60 z-10"></div>
+        <div class="relative z-20 text-center max-w-4xl px-4 animate-fade-in-up">
+            <h1 class="text-7xl md:text-9xl font-black text-white leading-none tracking-tighter uppercase mb-6">
+                TERÇA<br><span class="text-yellow-400">BOX</span>
+            </h1>
+            <p class="text-2xl text-white font-medium mb-12">O frescor da feira direto na sua porta.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#boxes" class="bg-yellow-400 text-brand-green px-10 py-5 rounded-3xl font-black text-xl hover:scale-105 transition-transform">VER OFERTAS</a>
+                <a href="https://wa.me/5522998468431" class="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-3xl font-black text-xl hover:bg-white/20 transition-all">WHATSAPP</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOXES SECTION (HIDDEN FOR COMPACTNESS IN PUSH) -->
+    <section id="boxes" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-5xl font-black text-brand-green mb-16">Nossos Boxes Premium</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12" id="boxes-container">
+                <!-- Box Solteiro -->
+                <div class="bg-white rounded-[3rem] p-8 shadow-xl border border-slate-100 hover:-translate-y-4 transition-all group">
+                    <img src="https://i.postimg.cc/4dBY8wM5/boxsolteiro.png" class="w-full h-64 object-cover rounded-[2rem] mb-8" alt="Box Solteiro">
+                    <h3 class="text-3xl font-black text-brand-green mb-4">Box Solteiro</h3>
+                    <p class="text-slate-500 mb-8 font-medium">O essencial para 1 pessoa.</p>
+                    <div class="text-4xl font-black text-brand-green mb-8">R$ 59<span class="text-sm">/semana</span></div>
+                    <a href="https://wa.me/5522998468431" class="block w-full bg-brand-green text-white py-4 rounded-2xl font-bold hover:bg-brand-dark">ASSINAR</a>
+                </div>
+                <!-- Box Casal -->
+                <div class="bg-white rounded-[3rem] p-8 shadow-2xl border-4 border-brand-orange hover:-translate-y-4 transition-all relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white px-6 py-1 rounded-full text-xs font-black">MAIS PEDIDO</div>
+                    <img src="https://i.postimg.cc/nrrCNBb2/boxcasal.png" class="w-full h-64 object-cover rounded-[2rem] mb-8" alt="Box Casal">
+                    <h3 class="text-3xl font-black text-brand-green mb-4">Box Casal</h3>
+                    <p class="text-slate-500 mb-8 font-medium">A medida certa para dois.</p>
+                    <div class="text-4xl font-black text-brand-green mb-8">R$ 89<span class="text-sm">/semana</span></div>
+                    <a href="https://wa.me/5522998468431" class="block w-full bg-brand-orange text-white py-4 rounded-2xl font-bold hover:bg-[#FF7A26]">ASSINAR</a>
+                </div>
+                <!-- Box Família -->
+                <div class="bg-white rounded-[3rem] p-8 shadow-xl border border-slate-100 hover:-translate-y-4 transition-all">
+                    <img src="https://i.postimg.cc/tJJY8WQ2/boxfamilia.png" class="w-full h-64 object-cover rounded-[2rem] mb-8" alt="Box Família">
+                    <h3 class="text-3xl font-black text-brand-green mb-4">Box Família</h3>
+                    <p class="text-slate-500 mb-8 font-medium">Abundância para todos.</p>
+                    <div class="text-4xl font-black text-brand-green mb-8">R$ 139<span class="text-sm">/semana</span></div>
+                    <a href="https://wa.me/5522998468431" class="block w-full bg-brand-green text-white py-4 rounded-2xl font-bold hover:bg-brand-dark">ASSINAR</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl font-black text-brand-green text-center mb-12">Perguntas Frequentes</h2>
+            <div id="faq-container" class="space-y-4"></div>
+        </div>
+    </section>
+
+    <!-- ASSISTANT MODAL -->
+    <div id="assistant-modal" class="assistant-modal items-center justify-center md:items-end md:justify-end md:p-6 bg-black/60 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none">
+        <div class="w-full h-full md:w-[450px] md:h-[650px] bg-white md:rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden">
+            <div class="bg-brand-green p-6 text-white flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-3xl">👨‍🍳</div>
+                    <h3 class="font-black">Chef Fresco</h3>
+                </div>
+                <button id="assistant-close" class="text-2xl font-bold">&times;</button>
+            </div>
+            <div id="chat-messages" class="flex-grow p-6 overflow-y-auto space-y-4 bg-slate-50"></div>
+            <form id="chat-form" class="p-4 border-t bg-white flex gap-2">
+                <input type="text" id="chat-input" placeholder="Dúvidas?" class="flex-grow bg-slate-100 rounded-xl px-4 py-3 outline-none">
+                <button type="submit" class="bg-brand-green text-white p-3 rounded-xl">OK</button>
+            </form>
+        </div>
+    </div>
+    <div id="assistant-fab" class="assistant-fab">👨‍🍳</div>
+
+    <!-- SEARCH MODAL (IA Visualizer) -->
+    <div id="search-modal" class="hidden fixed inset-0 z-[300] items-center justify-center p-4 bg-brand-dark/80 backdrop-blur-md">
+        <div class="w-full max-w-2xl bg-white rounded-[3rem] shadow-2xl overflow-hidden p-8">
+            <div class="flex justify-between items-center mb-8 border-b pb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-brand-dark">Visualizador de Itens</h3>
+                    <p class="text-slate-400 text-sm font-bold">Crie ícones no estilo Claymorphism</p>
+                </div>
+                <button id="search-modal-close" class="text-4xl text-slate-300">&times;</button>
+            </div>
+            <form id="search-form" class="relative mb-8">
+                <input type="text" id="search-input" placeholder="O que deseja ver? (Ex: Melancia)" class="w-full bg-slate-100 p-5 rounded-2xl font-bold outline-none border-2 border-transparent focus:border-brand-green transition-all">
+                <button type="submit" class="absolute right-2 top-2 bottom-2 bg-brand-green text-white px-6 rounded-xl font-bold">VER</button>
+            </form>
+            <div id="search-preview" class="min-h-[300px] border-4 border-dashed border-slate-100 rounded-[2rem] flex flex-col items-center justify-center bg-slate-50">
+                <p class="text-slate-300 font-bold">Digite algo acima para ver a mágica.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/assistant.js"></script>
+    <script type="module" src="js/search-modal.js"></script>
+</body>
+</html>
