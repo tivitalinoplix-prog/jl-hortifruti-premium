@@ -247,7 +247,7 @@
 
                 <div class="relative max-w-4xl mx-auto space-y-24 md:space-y-32" id="boxes-container">
                     
-                    <!-- BOX SOLTEIRO (STATIC) -->
+                    <!-- BOX SOLTEIRO -->
                     <div class="parallax-card sticky top-24 md:top-32 w-full group transition-all duration-500" style="z-index: 1; margin-bottom: 4rem">
                         <div class="bg-white rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-white transition-all duration-700 hover:shadow-[0_70px_120px_-20px_rgba(0,0,0,0.25)] flex flex-col md:flex-row h-full md:min-h-[500px]">
                             <div class="relative w-full md:w-5/12 bg-[#004D3C] overflow-hidden flex items-stretch">
@@ -280,7 +280,7 @@
                         </div>
                     </div>
 
-                    <!-- BOX CASAL (STATIC) -->
+                    <!-- BOX CASAL -->
                     <div class="parallax-card sticky top-24 md:top-32 w-full group transition-all duration-500" style="z-index: 2; margin-bottom: 4rem">
                         <div class="bg-white rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-white transition-all duration-700 hover:shadow-[0_70px_120px_-20px_rgba(0,0,0,0.25)] flex flex-col md:flex-row h-full md:min-h-[500px]">
                             <div class="absolute top-8 left-8 z-30 bg-brand-orange text-white text-[11px] font-black px-6 py-2.5 rounded-full shadow-2xl tracking-[0.2em] uppercase animate-bounce">MAIS PEDIDO</div>
@@ -315,7 +315,7 @@
                         </div>
                     </div>
 
-                    <!-- BOX FAMILIA (STATIC) -->
+                    <!-- BOX FAMILIA -->
                     <div class="parallax-card sticky top-24 md:top-32 w-full group transition-all duration-500" style="z-index: 3; margin-bottom: 0">
                         <div class="bg-white rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-white transition-all duration-700 hover:shadow-[0_70px_120px_-20px_rgba(0,0,0,0.25)] flex flex-col md:flex-row h-full md:min-h-[500px]">
                             <div class="relative w-full md:w-[60%] bg-[#004D3C] overflow-hidden flex items-stretch">
@@ -375,13 +375,12 @@
             <div class="absolute inset-0 z-0">
                 <img src="https://i.postimg.cc/V6ddXbvY/woman.png" alt="Mulher com cesta de frutas e verduras" class="w-full h-full object-cover object-center" />
             </div>
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-green/90 via-brand-green/60 to-transparent z-[1]"></div>
             <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
                 <div class="max-w-lg">
-                    <h2 class="font-black text-5xl md:text-7xl tracking-tighter mb-8 leading-[0.9] text-white uppercase drop-shadow-2xl">
-                        MAIS SABOR<br />NA SUA<br /><span class="text-yellow-400">COZINHA.</span>
+                    <h2 class="font-black text-5xl md:text-7xl tracking-tighter mb-8 leading-[0.9] uppercase drop-shadow-[0_4px_20px_rgba(0,0,0,0.4)]" style="color: #1a1a1a;">
+                        MAIS SABOR<br />NA SUA<br /><span class="text-yellow-400 drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">COZINHA.</span>
                     </h2>
-                    <p class="mb-10 text-lg md:text-xl text-white/90 font-medium max-w-md leading-relaxed drop-shadow-md">
+                    <p class="mb-10 text-lg md:text-xl font-medium max-w-md leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]" style="color: #333;">
                         Ingredientes frescos, selecionados com carinho e entregues na sua porta. Praticidade para quem não abre mão da saúde.
                     </p>
                     <a href="https://wa.me/5522998468431?text=Quero%20minha%20box!" target="_blank" rel="noopener noreferrer"
@@ -411,20 +410,61 @@
     </main>
 
     <!-- FOOTER -->
-    <footer id="qualidade" class="bg-brand-dark text-white py-20">
+    <footer id="qualidade" class="bg-brand-dark text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <div class="md:col-span-2">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Logo e descrição -->
+                <div>
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center overflow-hidden border-2 border-yellow-400 shadow-xl">
                             <img src="https://i.postimg.cc/76cfLtSc/logo.jpg" alt="JL Logo" class="w-full h-full object-cover" />
                         </div>
-                        <div class="flex flex-col"><span class="text-white font-black text-2xl leading-none uppercase">JL</span><span class="text-white font-bold text-xs uppercase tracking-tight">Hortifruti</span></div>
+                        <div class="flex flex-col">
+                            <span class="text-white font-black text-2xl leading-none uppercase">JL</span>
+                            <span class="text-white font-bold text-xs uppercase tracking-tight">Hortifruti</span>
+                        </div>
                     </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">O frescor da feira em casa. Entregas de terça a sábado em Macaé com produtos selecionados.</p>
+                </div>
+
+                <!-- Links rápidos -->
+                <div>
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest mb-6">Navegação</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#hero" class="text-slate-400 hover:text-yellow-400 transition-colors font-medium text-sm">Início</a></li>
+                        <li><a href="#boxes" class="text-slate-400 hover:text-yellow-400 transition-colors font-medium text-sm">Nossos Boxes</a></li>
+                        <li><a href="#tercabox" class="text-slate-400 hover:text-yellow-400 transition-colors font-medium text-sm">Terça Box</a></li>
+                        <li><a href="#faq" class="text-slate-400 hover:text-yellow-400 transition-colors font-medium text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="text-white font-black text-sm uppercase tracking-widest mb-6">Contato</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3">
+                            <span class="iconify text-yellow-400 text-lg" data-icon="solar:phone-bold"></span>
+                            <span class="text-slate-400 font-medium text-sm">(22) 99846-8431</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="iconify text-yellow-400 text-lg" data-icon="solar:map-point-bold"></span>
+                            <span class="text-slate-400 font-medium text-sm">Macaé, RJ</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="iconify text-yellow-400 text-lg" data-icon="solar:clock-circle-bold"></span>
+                            <span class="text-slate-400 font-medium text-sm">Terça a Sábado</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/5522998468431" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 bg-brand-green text-white px-5 py-3 rounded-xl font-bold text-sm mt-6 hover:bg-brand-green-light transition-all">
+                        <span class="iconify text-lg" data-icon="mdi:whatsapp"></span>
+                        Fale no WhatsApp
+                    </a>
                 </div>
             </div>
-            <div class="border-t border-white/10 pt-10 text-center flex flex-col md:flex-row justify-between items-center gap-6">
-                <p class="text-slate-500 font-bold text-sm uppercase tracking-widest">© <span id="current-year"></span> JL Hortifruti.</p>
+
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-slate-500 font-bold text-sm uppercase tracking-widest">© <span id="current-year"></span> JL Hortifruti. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
