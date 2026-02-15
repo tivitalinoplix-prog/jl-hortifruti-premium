@@ -1,0 +1,42 @@
+/* Custom Styles for JL Hortifruti */
+.scroll-smooth { scroll-behavior: smooth; }
+
+.navbar { transition: all 0.3s ease; }
+.navbar.transparent { background: transparent; }
+
+.faq-answer { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+
+.assistant-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    background: #006B54;
+    color: white;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 107, 84, 0.3);
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.assistant-fab:hover { transform: scale(1.1); }
+
+.assistant-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+}
